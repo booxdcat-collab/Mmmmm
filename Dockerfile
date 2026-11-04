@@ -19,7 +19,7 @@ COPY pyproject.toml uv.lock ./
 # under BuildKit (buildx) instead of /usr/local/bin — behavior differs between
 # plain `docker build` and buildx, so don't assert on sys.executable here.
 # The runtime stage re-validates by importing the real deps instead.
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,id=s/34699b05-d3fd-4010-88e8-df9eff3d135b-/root/.cache/uv,target=/root/.cache/uv \
     UV_PYTHON_DOWNLOADS=never \
     uv sync --frozen --no-install-project --compile-bytecode \
         --python /usr/local/bin/python3.14 \
